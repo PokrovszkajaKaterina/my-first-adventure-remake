@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
 
+    private PlayerStamina playerStamina;
+
     public LayerMask whatIsGround;
     bool grounded;
 
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         animator = GetComponentInChildren<Animator>();
+        playerStamina = GetComponent<PlayerStamina>();
     }
 
     void Update()
@@ -74,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && playerStamina.CanRun())
             moveSpeed = runSpeed;
         else
             moveSpeed = walkSpeed;
