@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")]
     public float jumpForce;
     public float jumpCooldown;
+    public float fallMultiplier = 2.5f;
     bool readyToJump = true;
 
     [Header("Ground Check")]
@@ -31,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
+    Rigidbody playerRigidBody;
     Animator animator;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        playerRigidBody = GetComponent<Rigidbody>();
+        playerRigidBody.freezeRotation = true;
         animator = GetComponentInChildren<Animator>();
         playerStamina = GetComponent<PlayerStamina>();
     }
@@ -50,17 +51,17 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         if (grounded)
-            rb.linearDamping = groundDrag;
+            playerRigidBody.linearDamping = groundDrag;
         else
-            rb.linearDamping = 0;
+            playerRigidBody.linearDamping = 0;
 
 
         if (animator != null)
         {
-            float speed = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z).magnitude;
+            float speed = new Vector3(playerRigidBody.linearVelocity.x, 0f, playerRigidBody.linearVelocity.z).magnitude;
             animator.SetFloat("Speed", speed);
 
-            Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
+            Vector3 localVelocity = transform.InverseTransformDirection(playerRigidBody.linearVelocity);
             animator.SetFloat("VelocityX", localVelocity.x);
             animator.SetFloat("VelocityZ", localVelocity.z);
         }
@@ -69,7 +70,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
-        rb.MoveRotation(Quaternion.Euler(0, orientation.eulerAngles.y, 0));
+        playerRigidBody.MoveRotation(Quaternion.Euler(0, orientation.eulerAngles.y, 0));
+
+        if (!grounded && playerRigidBody.linearVelocity.y < 0)
+            playerRigidBody.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
     }
 
     private void MyInput()
@@ -95,8 +99,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        playerRigidBody.linearVelocity = new Vector3(playerRigidBody.linearVelocity.x, 0f, playerRigidBody.linearVelocity.z);
+        playerRigidBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
     private void ResetJump()
@@ -107,17 +111,17 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        playerRigidBody.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        Vector3 flatVel = new Vector3(playerRigidBody.linearVelocity.x, 0f, playerRigidBody.linearVelocity.z);
 
         if (flatVel.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            playerRigidBody.linearVelocity = new Vector3(limitedVel.x, playerRigidBody.linearVelocity.y, limitedVel.z);
         }
     }
 }

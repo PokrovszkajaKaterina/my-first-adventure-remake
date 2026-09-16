@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private UIDocument uiDocument;
+    public static bool IsNewGame;
 
     private void OnEnable()
     {
@@ -19,6 +20,7 @@ public class MainMenuController : MonoBehaviour
 
     private void OnNewGameClicked()
     {
+        IsNewGame = true;
         SceneManager.LoadScene("GardenScene");
     }
 

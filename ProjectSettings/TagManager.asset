@@ -24,11 +24,11 @@ TagManager:
   - MainCameraOnly
   - Oasis_TerrainBake
   - whatIsGround
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerBody
+  -
+  -
+  -
+  -
   - Cockpit
   - Cockpit_3DSkybox
   - Cockpit_3DSkybox_BG

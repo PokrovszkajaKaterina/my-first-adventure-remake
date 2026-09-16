@@ -5,24 +5,24 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("Health")]
     public int maxHealth = 100;
-    private int currentHealth;
+    public int CurrentHealth { get; private set; }
     
     [Header("UI")]
     public Slider healthBar;
 
     void Start() 
     {
-        currentHealth = maxHealth;
+        CurrentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
+        healthBar.value = CurrentHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.value = currentHealth;
+        CurrentHealth -= damage;
+        healthBar.value = CurrentHealth;
 
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Die();
         }

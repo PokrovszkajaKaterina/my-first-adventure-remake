@@ -13,15 +13,15 @@ public class PlayerStamina : MonoBehaviour
     [Header("UI")]
     public Slider staminaBar;
 
-    private float currentStamina;
+    public float CurrentStamina { get; private set; }
     private bool isExhausted = false;
     private float regenTimer = 0f;
 
     void Start() 
     {
-        currentStamina = maxStamina;
+        CurrentStamina = maxStamina;
         staminaBar.maxValue = maxStamina;
-        staminaBar.value = currentStamina;
+        staminaBar.value = CurrentStamina;
     }
 
     void Update()
@@ -30,12 +30,12 @@ public class PlayerStamina : MonoBehaviour
 
         if (shiftHeld && CanRun())
         {
-            currentStamina -= drainRate * Time.deltaTime;
+            CurrentStamina -= drainRate * Time.deltaTime;
             regenTimer = 0f;
 
-            if (currentStamina <= 0)
+            if (CurrentStamina <= 0)
             {
-                currentStamina = 0;
+                CurrentStamina = 0;
                 isExhausted = true;
             }
         }
@@ -45,17 +45,17 @@ public class PlayerStamina : MonoBehaviour
 
             if (regenTimer >= regenDelay)
             {
-                currentStamina += regenRate * Time.deltaTime;
-                currentStamina = Mathf.Min(currentStamina, maxStamina);
+                CurrentStamina += regenRate * Time.deltaTime;
+                CurrentStamina = Mathf.Min(CurrentStamina, maxStamina);
 
-                if (isExhausted && currentStamina >= runThreshold)
+                if (isExhausted && CurrentStamina >= runThreshold)
                 {
                     isExhausted = false;
                 }
             }
         }
 
-        staminaBar.value = Mathf.RoundToInt(currentStamina);
+        staminaBar.value = Mathf.RoundToInt(CurrentStamina);
     }
 
 
