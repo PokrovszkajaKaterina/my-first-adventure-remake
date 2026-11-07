@@ -17,7 +17,7 @@ public class PlayerStamina : MonoBehaviour
     private bool isExhausted = false;
     private float regenTimer = 0f;
 
-    void Start() 
+    void Start()
     {
         CurrentStamina = maxStamina;
         staminaBar.maxValue = maxStamina;
@@ -63,6 +63,16 @@ public class PlayerStamina : MonoBehaviour
     {
         return !isExhausted;
     }
+    void Awake()
+    {
+        CurrentStamina = maxStamina;
+        staminaBar.maxValue = maxStamina;
+        staminaBar.value = CurrentStamina;
+    }
 
+    public void RestoreStamina(float stamina)
+    {
+        CurrentStamina = stamina;
+    }
 
 }

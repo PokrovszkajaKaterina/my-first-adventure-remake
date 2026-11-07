@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct PlayerSaveData
+public struct GameplayData
 {
   public Vector3 position;
   public string sceneName;
@@ -10,5 +10,7 @@ public struct PlayerSaveData
   public int currentLevel;
   public int currentXP;
   public int xpToNextLevel;
+  
+  public string saveTimestamp;
   
 } 

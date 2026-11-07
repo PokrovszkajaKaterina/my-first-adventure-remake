@@ -1,0 +1,14 @@
+{
+    "position": {
+        "x": 0.4626639187335968,
+        "y": 0.13000011444091798,
+        "z": 64.43318176269531
+    },
+    "sceneName": "GardenScene",
+    "currentHealth": 100,
+    "currentStamina": 100.0,
+    "currentLevel": 1,
+    "currentXP": 0,
+    "xpToNextLevel": 100,
+    "saveTimestamp": "2026-11-07T17:32:05.9861817+01:00"
+}

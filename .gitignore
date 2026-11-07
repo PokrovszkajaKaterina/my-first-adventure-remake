@@ -64,3 +64,6 @@ Assets/SharedAssets/TextMeshPro/Fonts/LiberationSans*
 Assets/SharedAssets/TextMeshPro/Resources/Fonts*/
 Assets/SharedAssets/TextMeshPro/Resources/Style*/
 Assets/SharedAssets/TextMeshPro/Resources/LineBreaking*
+
+# Local save games
+/Saves/

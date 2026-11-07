@@ -6,11 +6,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("Health")]
     public int maxHealth = 100;
     public int CurrentHealth { get; private set; }
-    
+
     [Header("UI")]
     public Slider healthBar;
 
-    void Start() 
+    void Start()
     {
         CurrentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
@@ -32,6 +32,19 @@ public class PlayerHealth : MonoBehaviour
     {
         // Handle player death (e.g., play animation, disable controls, etc.)
         Debug.Log("Player has died.");
+    }
+
+    void Awake()
+    {
+        CurrentHealth = maxHealth;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = CurrentHealth;
+    }
+
+    public void RestoreHealth(int health)
+    {
+        CurrentHealth = health;
+        healthBar.value = CurrentHealth;
     }
 
 }

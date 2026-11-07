@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=a172f9a9c1bf2a947bd4274e3f38a29c&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1;">
+        <ui:Button text="" name="save-entry" class="save-entry" style="height: 111px;">
+            <ui:Label text="Label" name="saved-lvl" style="width: 122px; position: absolute; top: 16px; left: 363px; -unity-font-definition: url(&quot;project://database/Assets/Font/Kaisei_Decol/KaiseiDecol-Regular.ttf?fileID=12800000&amp;guid=835b00ef5e9de3e4487d5c89112ac55a&amp;type=3#KaiseiDecol-Regular&quot;); -unity-text-align: middle-right; -unity-font-style: bold-and-italic;"/>
+            <ui:Label text="Label" name="saved-timestamp" style="width: 287px; height: 38px; -unity-font-definition: url(&quot;project://database/Assets/Font/Kaisei_Decol/KaiseiDecol-Bold.ttf?fileID=12800000&amp;guid=bb1da30ed6171a648819d11a7c2f5028&amp;type=3#KaiseiDecol-Bold&quot;); -unity-font-style: bold; -unity-text-align: middle-left;"/>
+            <ui:Label text="Label" name="saved-location" style="width: 283px; position: absolute; top: 65px; left: 12px; height: 37px; -unity-font-definition: url(&quot;project://database/Assets/Font/Kaisei_Decol/KaiseiDecol-Bold.ttf?fileID=12800000&amp;guid=bb1da30ed6171a648819d11a7c2f5028&amp;type=3#KaiseiDecol-Bold&quot;); -unity-font-style: normal; -unity-text-align: middle-left;"/>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

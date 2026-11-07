@@ -1,5 +1,4 @@
 :root {
-
 }
 
 .menu-button {
@@ -10,4 +9,64 @@
 .menu-button:hover {
     color: rgba(255, 255, 255, 0.5);
     -unity-font-style: bold;
+}
+
+.save-entry {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+    margin-bottom: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    border-bottom-width: 1px;
+    border-left-color: rgba(0, 0, 0, 0.4);
+    border-right-color: rgba(0, 0, 0, 0.4);
+    border-top-color: rgba(0, 0, 0, 0.4);
+}
+
+.save-entry:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(255, 255, 255, 0.36);
+    border-left-color: rgba(255, 255, 255, 0.36);
+    border-right-color: rgba(255, 255, 255, 0.36);
+    border-top-color: rgba(255, 255, 255, 0.36);
+}
+
+#save-list .unity-scroller--vertical {
+    width: 6px;
+    min-width: 6px;
+}
+
+#save-list .unity-scroller--vertical .unity-scroller__slider,
+#save-list .unity-scroller--vertical .unity-base-slider__drag-container {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#save-list .unity-scroller--vertical .unity-base-slider__tracker,
+#save-list .unity-scroller--vertical .unity-base-slider__dragger,
+#save-list .unity-scroller--vertical .unity-base-slider__dragger-border {
+    left: 0;
+    right: 0;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    border-width: 0;
+}
+
+#save-list .unity-scroller__low-button,
+#save-list .unity-scroller__high-button {
+    display: none;
+}
+
+#save-list .unity-base-slider__tracker {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#save-list .unity-base-slider__dragger {
+    background-color: rgba(0, 0, 0, 0.4);
 }

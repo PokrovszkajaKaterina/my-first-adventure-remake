@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerExperience: MonoBehaviour
+public class PlayerExperience : MonoBehaviour
 {
     [Header("Experience")]
     public int currentLevel = 1;
@@ -11,7 +11,7 @@ public class PlayerExperience: MonoBehaviour
     [Header("UI")]
     public Slider xpBar;
 
-    void Start() 
+    void Start()
     {
         xpBar.maxValue = xpToNextLevel;
         xpBar.value = currentXP;
@@ -36,7 +36,26 @@ public class PlayerExperience: MonoBehaviour
         xpBar.maxValue = xpToNextLevel;
         xpBar.value = currentXP;
 
-    
+
         Debug.Log("Leveled up to " + currentLevel + "!");
+    }
+
+    void Awake()
+    {
+        UpdateXPBar();
+    }
+
+    public void RestoreExperience(int level, int xp, int xpNeeded)
+    {
+        currentLevel = level;
+        currentXP = xp;
+        xpToNextLevel = xpNeeded;
+        UpdateXPBar();
+    }
+
+    void UpdateXPBar()
+    {
+        xpBar.maxValue = xpToNextLevel;
+        xpBar.value = currentXP;
     }
 }
